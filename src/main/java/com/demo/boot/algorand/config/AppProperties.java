@@ -1,6 +1,6 @@
 package com.demo.boot.algorand.config;
 
-import com.demo.boot.algorand.account.AppAccount;
+import com.demo.boot.algorand.model.AppAccount;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 

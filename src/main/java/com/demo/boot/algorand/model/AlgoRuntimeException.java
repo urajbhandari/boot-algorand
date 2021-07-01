@@ -1,4 +1,4 @@
-package com.demo.boot.algorand.account;
+package com.demo.boot.algorand.model;
 
 public class AlgoRuntimeException extends RuntimeException {
 

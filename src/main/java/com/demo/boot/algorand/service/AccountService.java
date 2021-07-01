@@ -4,7 +4,7 @@ import com.algorand.algosdk.account.Account;
 import com.algorand.algosdk.v2.client.algod.AccountInformation;
 import com.algorand.algosdk.v2.client.common.AlgodClient;
 import com.algorand.algosdk.v2.client.common.Response;
-import com.demo.boot.algorand.account.AlgoRuntimeException;
+import com.demo.boot.algorand.model.AlgoRuntimeException;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -1,9 +1,9 @@
 package com.demo.boot.algorand.service;
 
 import com.algorand.algosdk.account.Account;
-import com.demo.boot.algorand.account.AlgoRuntimeException;
-import com.demo.boot.algorand.account.AppAccount;
-import com.demo.boot.algorand.account.AppRuntimeException;
+import com.demo.boot.algorand.model.AlgoRuntimeException;
+import com.demo.boot.algorand.model.AppAccount;
+import com.demo.boot.algorand.model.AppRuntimeException;
 import com.demo.boot.algorand.config.AppProperties;
 import org.springframework.stereotype.Service;
 

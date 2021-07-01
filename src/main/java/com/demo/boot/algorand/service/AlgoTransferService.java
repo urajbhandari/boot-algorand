@@ -10,7 +10,7 @@ import com.algorand.algosdk.v2.client.common.Response;
 import com.algorand.algosdk.v2.client.model.NodeStatusResponse;
 import com.algorand.algosdk.v2.client.model.PendingTransactionResponse;
 import com.algorand.algosdk.v2.client.model.PostTransactionsResponse;
-import com.demo.boot.algorand.account.AppRuntimeException;
+import com.demo.boot.algorand.model.AppRuntimeException;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
