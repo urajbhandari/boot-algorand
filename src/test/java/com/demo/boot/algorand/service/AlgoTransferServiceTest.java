@@ -39,16 +39,16 @@ class AlgoTransferServiceTest {
         log.info("Bob account initial balance: " + bobAccountInitialBalance);
 
         //transfer the amount
-        int transferAmountMilliAlgos = 1000000;
-        String note = "Alice to Bob micro algo transfer: " + transferAmountMilliAlgos;
+        int transferAmountMicroAlgos = 1000000;
+        String note = "Alice to Bob micro algo transfer: " + transferAmountMicroAlgos;
         PendingTransactionResponse transactionResponse = transferService.transferAlgo(aliceAccount, bobAccount.getAddress(),
-                transferAmountMilliAlgos, note);
+                transferAmountMicroAlgos, note);
 
         //verify the account balances are correct after the transfer
         Long aliceAccountBalanceAfterTransfer = accountService.getAccountBalance(aliceAccount);
         Long bobAccountBalanceAfterTransfer = accountService.getAccountBalance(bobAccount);
-        assertThat(aliceAccountBalanceAfterTransfer).isEqualTo(aliceAccountInitialBalance - transferAmountMilliAlgos - 1000);
-        assertThat(bobAccountBalanceAfterTransfer).isEqualTo(bobAccountInitialBalance + transferAmountMilliAlgos);
+        assertThat(aliceAccountBalanceAfterTransfer).isEqualTo(aliceAccountInitialBalance - transferAmountMicroAlgos - 1000);
+        assertThat(bobAccountBalanceAfterTransfer).isEqualTo(bobAccountInitialBalance + transferAmountMicroAlgos);
         assertThat(getNote(transactionResponse)).isEqualTo(note);
     }
 

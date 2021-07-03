@@ -26,8 +26,8 @@ public class AlgoTransferService {
         this.client = client;
     }
 
-    public PendingTransactionResponse transferAlgo(Account fromAccount, Address toAddress, long amountMilliAlgos, String note) throws Exception {
-        Transaction txn = createTransaction(fromAccount, toAddress, amountMilliAlgos, note);
+    public PendingTransactionResponse transferAlgo(Account fromAccount, Address toAddress, long amountMicroAlgos, String note) throws Exception {
+        Transaction txn = createTransaction(fromAccount, toAddress, amountMicroAlgos, note);
 
         SignedTransaction signedTxn = signTransaction(fromAccount, txn);
 
@@ -39,11 +39,11 @@ public class AlgoTransferService {
         return pTrx;
     }
 
-    private Transaction createTransaction(Account fromAccount, Address toAddress, long amountMilliAlgos, String note) throws Exception {
+    private Transaction createTransaction(Account fromAccount, Address toAddress, long amountMicroAlgos, String note) throws Exception {
         return Transaction.PaymentTransactionBuilder()
                 .sender(fromAccount.getAddress())
                 .noteUTF8(note)
-                .amount(amountMilliAlgos)
+                .amount(amountMicroAlgos)
                 .receiver(toAddress)
                 .lookupParams(client)
                 .build();

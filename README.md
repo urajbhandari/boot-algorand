@@ -1,4 +1,4 @@
-# How to use Spring Framework with Java Algorand SDK
+# How to use Java Algorand SDK with Spring Framework
 Simple Algorand app that can be used to transfer ALGOs between two accounts.
 
 ## How to run
