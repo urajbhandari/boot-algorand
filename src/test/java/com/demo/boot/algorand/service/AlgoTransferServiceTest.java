@@ -26,29 +26,30 @@ class AlgoTransferServiceTest {
     AccountFactory accountFactory;
 
     @Test
-    void testTransferAlgoFromOneAccountToTwoAccount() throws Exception {
-        Account accountOne = accountFactory.getAccountByAlias("one");
-        Long accountOneBalance = accountService.getAccountBalance(accountOne);
-        log.info("Account one initial balance: " + accountOneBalance);
+    void testTransferAlgoFromAliceToBob() throws Exception {
+        Account aliceAccount = accountFactory.getAccountByAlias("alice");
+        Long aliceAccountInitialBalance = accountService.getAccountBalance(aliceAccount);
+        log.info("Alic account initial balance: " + aliceAccountInitialBalance);
         //if account balance is less than 0.001 (which is equivalent to 1000microAlgo) Algo, fail the test
-        if (accountOneBalance < 1000) {
-            Assertions.fail("Account one does not have enough balance: " + accountOneBalance);
+        if (aliceAccountInitialBalance < 1000) {
+            Assertions.fail("Alice account does not have enough balance: " + aliceAccountInitialBalance);
         }
-        Account accountTwo = accountFactory.getAccountByAlias("two");
-        Long accountTwoBalance = accountService.getAccountBalance(accountTwo);
-        log.info("Account two initial balance: " + accountTwoBalance);
+        Account bobAccount = accountFactory.getAccountByAlias("bob");
+        Long bobAccountInitialBalance = accountService.getAccountBalance(bobAccount);
+        log.info("Bob account initial balance: " + bobAccountInitialBalance);
 
         //transfer the amount
         int transferAmountMilliAlgos = 1000000;
-        PendingTransactionResponse transactionResponse = transferService.transferAlgo(accountOne, accountTwo.getAddress(),
-                transferAmountMilliAlgos, "Test note from Junit");
+        String note = "Alice to Bob micro algo transfer: " + transferAmountMilliAlgos;
+        PendingTransactionResponse transactionResponse = transferService.transferAlgo(aliceAccount, bobAccount.getAddress(),
+                transferAmountMilliAlgos, note);
 
         //verify the account balances are correct after the transfer
-        Long accountOneBalanceAfterTransfer = accountService.getAccountBalance(accountOne);
-        Long accountTwoBalanceAfterTransfer = accountService.getAccountBalance(accountTwo);
-        assertThat(accountOneBalanceAfterTransfer).isEqualTo(accountOneBalance - transferAmountMilliAlgos - 1000);
-        assertThat(accountTwoBalanceAfterTransfer).isEqualTo(accountTwoBalance + transferAmountMilliAlgos);
-        assertThat(getNote(transactionResponse)).isEqualTo("Test note from Junit");
+        Long aliceAccountBalanceAfterTransfer = accountService.getAccountBalance(aliceAccount);
+        Long bobAccountBalanceAfterTransfer = accountService.getAccountBalance(bobAccount);
+        assertThat(aliceAccountBalanceAfterTransfer).isEqualTo(aliceAccountInitialBalance - transferAmountMilliAlgos - 1000);
+        assertThat(bobAccountBalanceAfterTransfer).isEqualTo(bobAccountInitialBalance + transferAmountMilliAlgos);
+        assertThat(getNote(transactionResponse)).isEqualTo(note);
     }
 
     private String getNote(PendingTransactionResponse transactionResponse) throws JSONException {

@@ -3,7 +3,7 @@ package com.demo.boot.algorand.model;
 import lombok.Data;
 
 @Data
-public class AppAccount {
+public class AlgoAccount {
     private String address;
-    private String passphrase;
+    private String mnemonic;
 }

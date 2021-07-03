@@ -1,6 +1,6 @@
 package com.demo.boot.algorand.model;
 
-public class AppRuntimeException extends RuntimeException{
+public class AppRuntimeException extends RuntimeException {
     public AppRuntimeException() {
         super();
     }

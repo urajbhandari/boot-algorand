@@ -20,10 +20,9 @@ public class AccountService {
         AccountInformation accountInformation = client.AccountInformation(account.getAddress());
         String[] txHeaders = new String[]{};
         String[] txValues = new String[]{};
-        Response<com.algorand.algosdk.v2.client.model.Account> resp = null;
+        Response<com.algorand.algosdk.v2.client.model.Account> resp;
         try {
-            resp = accountInformation
-                    .execute(txHeaders, txValues);
+            resp = accountInformation.execute(txHeaders, txValues);
         } catch (Exception e) {
             throw new AlgoRuntimeException("Error while getting account information for account " + account.getAddress(), e);
         }

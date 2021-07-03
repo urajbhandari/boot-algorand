@@ -1,6 +1,7 @@
 package com.demo.boot.algorand.config;
 
-import com.demo.boot.algorand.model.AppAccount;
+import com.demo.boot.algorand.model.AlgoAccount;
+import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -8,19 +9,12 @@ import java.util.Map;
 
 @Component
 @ConfigurationProperties(prefix = "app")
+@Data
 public class AppProperties {
 
     /**
-     * Key of the Map can be thought of as an alias name.
+     * Key of the Map can is alias name (e.g. bob). The value of the Map is AlgoAccount which stores address and mnemonic.
      */
-    private Map<String, AppAccount> accounts;
-
-    public Map<String, AppAccount> getAccounts() {
-        return accounts;
-    }
-
-    public void setAccounts(Map<String, AppAccount> accounts) {
-        this.accounts = accounts;
-    }
+    private Map<String, AlgoAccount> accounts;
 
 }
